@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block maincontent %}
+    <h4 class="mb-3">Contact Information</h4>
+    <form  method="POST" action="{% url 'makeanorder_page' %}">
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                {{ form.name.errors}}
+                <label for="{{ form.name.id_for_label }}">Имя</label>
+                {% render_field form.name|add_class:'form-control' %}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.country.errors}}
+                <label for="{{ form.name.id_for_label }}">Страна</label>
+                {{ form.country|add_class:'form-control' }}
+            </div>
+        </div>            
+        
+            <div class="mb-3">
+                {{ form.email.errors}}
+                <label for="{{ form.email.id_for_label }}">Почта</label>
+                {% render_field form.email|add_class:'form-control' placeholder="you@example.com" %}
+            </div>
+    
+        <div class="row">
+            <div class="col-md-4 mb-2">
+                {{ form.contact_way.errors }}
+                <label for="{{ form.contact_way.id_for_label }}">Как с вами связаться</label>
+                {% render_field form.contact_way|add_class:'custom-select  d-block w-100' %}
+            </div>
+            <div class="col-md-8 mb-4">
+                {{ form.account_name.errors }}
+                <label for="{{ form.account_name.id_for_label }}">Имя Аккаунта</label>
+                {% render_field form.account_name|add_class:'form-control' placeholder="@example" %}
+            </div>
+        </div>
+
+        <hr class="mb-4">
+        <button class="btn btn-outline-dark" type="submit">Сделать заказ</button>
+    </form>
+{% endblock %}

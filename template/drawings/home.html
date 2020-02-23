@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block order_form_content %}
+    <form class="form-inline my-2 my-lg-0" action="{% url 'makeanorder_page' %}">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Заказать Рисунок</button>
+    </form>
+{% endblock %}
+
+{% block maincontent %}
+    <div class="row">
+        {% if drawing_list %}
+            {% for drawing in drawing_list %}
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="portfolio-content">
+                        <figure>
+                            <img src="{{ drawing.image.url }}" alt="">
+                        </figure>
+                    </div><!-- .portfolio-content -->
+                </div><!-- .col -->
+        {% endfor %}
+    {% endif %}
+    </div>
+
+{% endblock %}

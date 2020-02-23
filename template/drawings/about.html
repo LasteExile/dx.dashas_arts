@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block order_form_content %}
+    <form class="form-inline my-2 my-lg-0" action="{% url 'makeanorder_page' %}">
+        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Заказать Рисунок</button>
+    </form>
+{% endblock %}
+
+{% block maincontent %}
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Привет, меня зовут Даша!</h1>
+            <p class="lead">Заказ выполняю в течение недели, если нужно быстрее пишите.</p>
+            <p class="lead">Не берусь за работу, если понимаю, что не смогу закончить.</p>
+            <p class="lead">Рисую: портреты, аватарки, иконки для "актуальных".</p>
+            <p class="lead">Размер арта выбираете вы.</p>
+            <p class="lead">Цена договорная(от 120 рублей/40 гривен/2 долларов).</p>
+            <p class="lead">Мой инстаграм: @dx.dasha</p>
+            <p class="lead">Мой инстаграм с рисунками: @dx.art.book</p>
+            <p class="lead">Мой телеграм: @dxdahsa</p>
+            <hr class="mb-4">
+            <p>Инстаграм создателя сайта: @the_creation_of_abyss</p>
+            <p>Телеграм создателя сайта: @the_creation_of_abyss</p>
+            <p class="lead">
+                <a href="{% url 'makeanorder_page' %}" class="btn btn-lg btn-outline-dark">Заказать рисунок</a>
+            </p>
+        </main>
+    </div>
+{% endblock %}
