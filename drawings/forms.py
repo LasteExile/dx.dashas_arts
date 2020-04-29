@@ -1,4 +1,5 @@
 from django import forms
+from django.core.validators import validate_email
 
 from . import telegram_orders_bot
 
@@ -8,7 +9,11 @@ class MakeAnOrderForm(forms.Form):
     email = forms.CharField()
     contact_way = forms.ChoiceField(choices=((1, 'Telegram'), (2, 'Instagram'),))
     account_name = forms.CharField()
-    
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if validate_email(email):
+            self.add_error('email', 'Enter a valid email address')
 
     def send_order(self, request):
         name = request['name']
